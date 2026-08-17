@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+      name="description"
+      content="Engineering case study for Kinesema: inspectable SgSL language structure, Python and FastAPI integration, accessibility, review boundaries, and the path toward signing motion."
+    >
+    <meta name="theme-color" content="#f5f3ea">
+    <title>Engineering Kinesema — Wei Xian</title>
+    <link rel="canonical" href="https://elystra-v.github.io/work/kinesema/">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <header class="site-header">
+      <a class="wordmark" href="/" aria-label="Wei Xian, portfolio home">
+        <span aria-hidden="true">WX</span>
+        <span>Wei Xian</span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="/">Portfolio</a>
+        <a href="https://kinesema.com">Kinesema</a>
+        <a class="nav-cta" href="https://github.com/elystra-v">GitHub</a>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Engineering case study · Kinesema Labs</p>
+          <h1 id="hero-title">Engineering Kinesema.</h1>
+          <p class="hero-intro">
+            Kinesema is a Deaf-led, white-box language-technology system exploring
+            how English can be transformed into an inspectable SgSL linguistic
+            representation before future signing motion is generated. This page
+            documents the engineering decisions behind that path—not a claim that
+            the system is a completed translator.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="https://kinesema.com">Visit Kinesema</a>
+            <a class="button button-secondary" href="/">Back to portfolio</a>
+          </div>
+        </div>
+
+        <aside class="venture-card" aria-label="Kinesema case study at a glance">
+          <div class="orbit orbit-one" aria-hidden="true"></div>
+          <div class="orbit orbit-two" aria-hidden="true"></div>
+          <p class="card-kicker">At a glance</p>
+          <h2>Language before motion.</h2>
+          <dl>
+            <div>
+              <dt>Role</dt>
+              <dd>Founder · system designer · developer</dd>
+            </div>
+            <div>
+              <dt>Stack</dt>
+              <dd>Python · FastAPI · Astro · TypeScript</dd>
+            </div>
+            <div>
+              <dt>Status</dt>
+              <dd>Active prototype · human review required</dd>
+            </div>
+          </dl>
+          <p class="status-note"><span aria-hidden="true"></span> Motion generation is not yet the public output</p>
+        </aside>
+      </section>
+
+      <section class="section venture-section" aria-labelledby="problem-title">
+        <div class="section-heading">
+          <p class="eyebrow">The problem</p>
+          <h2 id="problem-title">The visible gloss is an intermediate layer, not the destination.</h2>
+          <p>
+            A text-only preview can easily look like a tool for learning gloss.
+            Kinesema instead uses the visible structure as an inspection surface:
+            reviewers can examine what the language stage proposed before that
+            representation is allowed to influence future motion.
+          </p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature-card">
+            <span class="feature-number" aria-hidden="true">01</span>
+            <h3>Different language structure</h3>
+            <p>
+              English input is analysed before a candidate SgSL structure is
+              produced. The system does not treat word-for-word substitution as the
+              final language result.
+            </p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-number" aria-hidden="true">02</span>
+            <h3>Inspect before rendering</h3>
+            <p>
+              Intermediate decisions remain visible so a human reviewer can inspect,
+              question, and correct them before later stages turn language into motion.
+            </p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-number" aria-hidden="true">03</span>
+            <h3>Do not overclaim</h3>
+            <p>
+              Candidate structure is labelled as review-required. Motion, non-manual
+              features, and final avatar output remain separate future layers.
+            </p>
+          </article>
+        </div>
+
+        <div class="pipeline" role="group" aria-label="Kinesema language-to-motion path">
+          <p class="pipeline-label">Language-to-motion path</p>
+          <ol>
+            <li><span>Input</span>English</li>
+            <li><span>Language</span>Structured SgSL candidate</li>
+            <li><span>Authority</span>Human review</li>
+            <li><span>Future output</span>Motion representation + avatar</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="section work-section" aria-labelledby="built-title">
+        <div class="section-heading compact">
+          <p class="eyebrow">What I built</p>
+          <h2 id="built-title">A working vertical slice with explicit boundaries.</h2>
+        </div>
+
+        <div class="work-grid">
+          <article>
+            <h3>Inspectable parser path</h3>
+            <p>
+              A deterministic language pipeline produces bounded candidate structure
+              and exposes analysis fields instead of hiding every decision behind a
+              generative response.
+            </p>
+          </article>
+          <article>
+            <h3>Python service boundary</h3>
+            <p>
+              FastAPI accepts bounded input, calls the parser once, validates the
+              response shape, and returns only the fields intended for the public
+              inspection interface.
+            </p>
+          </article>
+          <article>
+            <h3>Review-aware interface</h3>
+            <p>
+              The product surface distinguishes submitted English, candidate SgSL
+              structure, human-review status, and unavailable motion rather than
+              presenting an intermediate artifact as final output.
+            </p>
+          </article>
+          <article>
+            <h3>Accessibility baseline</h3>
+            <p>
+              Semantic structure, keyboard access, visible focus, responsive layouts,
+              and reduced-motion support are treated as implementation requirements,
+              not a later visual polish step.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section principles-section" aria-labelledby="recovery-title">
+        <div class="section-heading">
+          <p class="eyebrow">Engineering recovery</p>
+          <h2 id="recovery-title">When complexity stopped serving the request path.</h2>
+          <p>
+            An earlier recursive execution path became impractical during integration,
+            with a single request taking roughly nine minutes. The surrounding work
+            also accumulated process-control infrastructure beyond what was needed to
+            prove the product path. I reset the problem to the smallest useful
+            vertical slice and rebuilt from there.
+          </p>
+        </div>
+
+        <ol class="principle-list">
+          <li>
+            <span>01</span>
+            <div>
+              <h3>Return to the stable language foundation</h3>
+              <p>Preserve the reviewed parser behaviour instead of rewriting the whole system around integration concerns.</p>
+            </div>
+          </li>
+          <li>
+            <span>02</span>
+            <div>
+              <h3>Remove recursive request execution</h3>
+              <p>Use a bounded non-recursive flow so one user request produces one controlled parser execution.</p>
+            </div>
+          </li>
+          <li>
+            <span>03</span>
+            <div>
+              <h3>Build the endpoint before speculative hardening</h3>
+              <p>Make the FastAPI → parser → validated response path work first, then add only protections tied to concrete failure modes.</p>
+            </div>
+          </li>
+          <li>
+            <span>04</span>
+            <div>
+              <h3>Use focused validation for normal changes</h3>
+              <p>Keep broad repository checks for release or architecture checkpoints instead of making every small change pay the full validation cost.</p>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <section class="section venture-section" aria-labelledby="boundary-title">
+        <div class="section-heading">
+          <p class="eyebrow">Current boundary</p>
+          <h2 id="boundary-title">What the prototype does—and does not claim.</h2>
+          <p>
+            The current system is intentionally narrow. It is useful because its
+            limits are visible, not because those limits are hidden behind a polished
+            output.
+          </p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature-card">
+            <span class="feature-number" aria-hidden="true">NOW</span>
+            <h3>Inspectable candidate structure</h3>
+            <p>Short English inputs can be analysed and returned as candidate SgSL structure with explicit review status.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-number" aria-hidden="true">NEXT</span>
+            <h3>Richer linguistic representation</h3>
+            <p>Signer space, timing, non-manual information, and other motion-relevant language features need representations richer than gloss alone.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-number" aria-hidden="true">LATER</span>
+            <h3>Motion and signing avatar</h3>
+            <p>A reviewed linguistic representation can then inform a separate motion layer rather than sending raw English directly to an opaque renderer.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="closing-section" aria-labelledby="closing-title">
+        <p class="eyebrow">Engineering case study</p>
+        <h2 id="closing-title">The product surface and the engineering record serve different audiences.</h2>
+        <p>
+          Kinesema.com presents the research system itself. This case study documents
+          the constraints, architectural choices, recovery work, and current limits
+          behind what I built. Private language rules, review material, and internal
+          implementation details remain outside this public portfolio.
+        </p>
+        <div class="hero-actions" style="justify-content: center;">
+          <a class="button button-light" href="https://kinesema.com">Visit Kinesema</a>
+          <a class="button button-light" href="/">Return to portfolio</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p><strong>Wei Xian</strong> · Technical founder &amp; builder of Kinesema Labs</p>
+      <p>© <span>2026</span> Wei Xian</p>
+    </footer>
+  </body>
+</html>
