@@ -23,7 +23,7 @@
       </a>
       <nav aria-label="Primary navigation">
         <a href="/">Portfolio</a>
-        <a href="https://kinesema.com">Kinesema</a>
+        <a href="#built">What I built</a>
         <a class="nav-cta" href="https://github.com/elystra-v">GitHub</a>
       </nav>
     </header>
@@ -34,14 +34,14 @@
           <p class="eyebrow">Engineering case study · Kinesema Labs</p>
           <h1 id="hero-title">Engineering Kinesema.</h1>
           <p class="hero-intro">
-            Kinesema is a Deaf-led, white-box language-technology system exploring
-            how English can be transformed into an inspectable SgSL linguistic
-            representation before future signing motion is generated. This page
-            documents the engineering decisions behind that path—not a claim that
-            the system is a completed translator.
+            Kinesema is a Deaf-first, inspectable language-technology system
+            exploring how English can move through structured SgSL analysis and
+            human review before any future signing motion. This page documents the
+            engineering decisions behind that path—not a claim that the system is a
+            completed translator.
           </p>
           <div class="hero-actions">
-            <a class="button button-primary" href="https://kinesema.com">Visit Kinesema</a>
+            <a class="button button-primary" href="#built">See what I built</a>
             <a class="button button-secondary" href="/">Back to portfolio</a>
           </div>
         </div>
@@ -120,7 +120,7 @@
         </div>
       </section>
 
-      <section class="section work-section" aria-labelledby="built-title">
+      <section class="section work-section" id="built" aria-labelledby="built-title">
         <div class="section-heading compact">
           <p class="eyebrow">What I built</p>
           <h2 id="built-title">A working vertical slice with explicit boundaries.</h2>
@@ -128,18 +128,18 @@
 
         <div class="work-grid">
           <article>
-            <h3>Inspectable parser path</h3>
+            <h3>Inspectable language-analysis path</h3>
             <p>
-              A deterministic language pipeline produces bounded candidate structure
-              and exposes analysis fields instead of hiding every decision behind a
-              generative response.
+              A deterministic analysis pipeline produces bounded candidate structure
+              and surfaces intermediate decisions for review instead of hiding them
+              behind an opaque response.
             </p>
           </article>
           <article>
             <h3>Python service boundary</h3>
             <p>
-              FastAPI accepts bounded input, calls the parser once, validates the
-              response shape, and returns only the fields intended for the public
+              FastAPI accepts bounded input, coordinates language analysis, validates
+              the response shape, and returns only the fields intended for the
               inspection interface.
             </p>
           </article>
@@ -164,14 +164,13 @@
 
       <section class="section principles-section" aria-labelledby="recovery-title">
         <div class="section-heading">
-          <p class="eyebrow">Engineering recovery</p>
-          <h2 id="recovery-title">When complexity stopped serving the request path.</h2>
+          <p class="eyebrow">Engineering iteration</p>
+          <h2 id="recovery-title">Simplifying the path improved reliability.</h2>
           <p>
-            An earlier recursive execution path became impractical during integration,
-            with a single request taking roughly nine minutes. The surrounding work
-            also accumulated process-control infrastructure beyond what was needed to
-            prove the product path. I reset the problem to the smallest useful
-            vertical slice and rebuilt from there.
+            During integration, the request path became too complex and slow for an
+            effective product experience. I reduced it to the smallest useful
+            vertical slice, clarified each component's responsibility, and rebuilt
+            validation and failure handling around observable needs.
           </p>
         </div>
 
@@ -179,29 +178,29 @@
           <li>
             <span>01</span>
             <div>
-              <h3>Return to the stable language foundation</h3>
-              <p>Preserve the reviewed parser behaviour instead of rewriting the whole system around integration concerns.</p>
+              <h3>Preserve verified behaviour</h3>
+              <p>Start from the working language-analysis foundation and change only the boundary needed for integration.</p>
             </div>
           </li>
           <li>
             <span>02</span>
             <div>
-              <h3>Remove recursive request execution</h3>
-              <p>Use a bounded non-recursive flow so one user request produces one controlled parser execution.</p>
+              <h3>Simplify the request flow</h3>
+              <p>Use one bounded path from request through analysis to a validated response.</p>
             </div>
           </li>
           <li>
             <span>03</span>
             <div>
-              <h3>Build the endpoint before speculative hardening</h3>
-              <p>Make the FastAPI → parser → validated response path work first, then add only protections tied to concrete failure modes.</p>
+              <h3>Add protections from evidence</h3>
+              <p>Build failure handling around observed risks instead of speculative complexity.</p>
             </div>
           </li>
           <li>
             <span>04</span>
             <div>
-              <h3>Use focused validation for normal changes</h3>
-              <p>Keep broad repository checks for release or architecture checkpoints instead of making every small change pay the full validation cost.</p>
+              <h3>Match validation to the change</h3>
+              <p>Use focused tests for everyday work and broader checks at release or architecture milestones.</p>
             </div>
           </li>
         </ol>
@@ -241,13 +240,12 @@
         <p class="eyebrow">Engineering case study</p>
         <h2 id="closing-title">The product surface and the engineering record serve different audiences.</h2>
         <p>
-          Kinesema.com presents the research system itself. This case study documents
-          the constraints, architectural choices, recovery work, and current limits
-          behind what I built. Private language rules, review material, and internal
-          implementation details remain outside this public portfolio.
+          This public case study documents the product problem, engineering approach,
+          and current boundaries at a level suitable for public review. Private
+          language rules, review materials, infrastructure, and implementation
+          details remain outside this portfolio.
         </p>
         <div class="hero-actions" style="justify-content: center;">
-          <a class="button button-light" href="https://kinesema.com">Visit Kinesema</a>
           <a class="button button-light" href="/">Return to portfolio</a>
         </div>
       </section>

@@ -438,6 +438,21 @@ h3 {
   background: var(--sage);
 }
 
+.work-grid-single {
+  grid-template-columns: 1fr;
+}
+
+.work-grid-single article > p {
+  max-width: 850px;
+}
+
+.availability-note {
+  align-self: center;
+  color: var(--muted);
+  font-size: 0.86rem;
+  font-weight: 720;
+}
+
 .principles-section {
   background: var(--paper);
 }
