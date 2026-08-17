@@ -20,7 +20,8 @@ Then open `http://127.0.0.1:4173`.
 
 ## Scope
 
-- `index.html` — one-page technical profile
+- `index.html` — technical profile homepage
+- `work/kinesema/index.html` — public engineering case study
 - `404.html` — accessible recovery page
 - `styles.css` — shared responsive styles
 - `favicon.svg` — simple WX site mark
